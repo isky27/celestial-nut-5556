@@ -1,11 +1,9 @@
-// import Interfacedesigner from "./pages/Interface-designer";
-import Marketplace from "./pages/Marketplace";
+import AllRoutes from "./pages/AllRoutes";
 
 function App() {
   return (
     <div className="App">
-      {/* <Interfacedesigner/> */}
-      <Marketplace/>
+      <AllRoutes/>
     </div>
   );
 }
