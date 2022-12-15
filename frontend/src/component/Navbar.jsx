@@ -20,6 +20,7 @@ import {
     CloseIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
+import Flag from './Flag';
   
   export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure();
@@ -28,15 +29,17 @@ import {
   
     return (
       <Box>
+        <Flag/>
+        <Box padding={'10px'}>
         <Flex
           bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
           py={{ base: 2 }}
           px={{ base: 4 }}
-          borderBottom={1}
-          borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.900')}
+          // borderBottom={1}
+          // borderStyle={'solid'}
+          // borderColor={useColorModeValue('gray.200', 'gray.900')}
           align={'center'}>
           <Flex
             flex={{ base: 1, md: 'auto' }}
@@ -72,16 +75,17 @@ import {
                 spacing={6}>
                 <Button
                   as={'a'}
-                  fontSize={'sm'}
+                  fontSize={'lg'}
                   fontWeight={400}
                   border={'3px solid grey'}
+                  borderRadius="8px"
                   bg={'none'}
                   href={'#'}>
                   Contact Sales
                 </Button>
                 <Button
                   display={{ base: 'none', md: 'inline-flex' }}
-                  fontSize={'sm'}
+                  fontSize={'lg'}
                   fontWeight={600}
                   color={'white'}
                   bg={'blue.400'}
@@ -93,7 +97,7 @@ import {
                 </Button>
                 <Button
                   as={'a'}
-                  fontSize={'sm'}
+                  fontSize={'lg'}
                   fontWeight={400}
                   bg={'none'}
                   border={'none'}
@@ -119,6 +123,7 @@ import {
                 </Box>)
           }
         </Flex>
+        </Box>
   
         <Collapse in={isOpen} animateOpacity>
           <MobileNav />
@@ -141,7 +146,7 @@ import {
                 <Link
                   p={2}
                   href={navItem.href ?? '#'}
-                  fontSize={'sm'}
+                  fontSize={'lg'}
                   fontWeight={500}
                   color={linkColor}
                   _hover={{
@@ -267,6 +272,6 @@ import {
       label: 'Enterprise',
     },
     {
-        label: 'Solutions',
+      label: 'Solutions',
     }
   ];
