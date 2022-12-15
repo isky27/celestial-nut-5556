@@ -1,10 +1,9 @@
-// import WorkSpace from "./component/WorkSpace";
-// import Test from "./component/Test";
+import AllRoutes from "./pages/AllRoutes";
+
 function App() {
   return (
     <div className="App">
-      
-      {/* <Test /> */}
+      <AllRoutes/>
     </div>
   );
 }
