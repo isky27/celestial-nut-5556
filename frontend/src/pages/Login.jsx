@@ -22,8 +22,8 @@ const Login = () => {
   const { isAuth, isError } = useSelector((store) => store.userLogin);
   const dispatch = useDispatch();
   // console.log(isAuth, token, isError, process.env.REACT_APP_MAIN_URL)
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   if (isAuth) {
     return <Navigate to="/" />;
@@ -47,10 +47,7 @@ const Login = () => {
           my={12}
           alignItems={"center"}
         >
-          <Image
-            src={""}
-            width={"30%"}
-          />
+          <Image src={""} width={"30%"} />
           <Heading lineHeight={1.1} fontSize={{ base: "2xl", md: "3xl" }}>
             User
           </Heading>
@@ -62,6 +59,7 @@ const Login = () => {
                 _placeholder={{ color: "gray.500" }}
                 type="email"
                 value={email}
+                name="email"
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -72,6 +70,7 @@ const Login = () => {
               <Input
                 type="password"
                 name="password"
+                value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
