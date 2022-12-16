@@ -134,11 +134,11 @@ const Marketplace = () => {
         <Box height="96" w="100%" display="flex" marginTop="8">
           <Box p="4" height="100%" width="68%">
             <Text
-              fontSize="2xl"
               marginTop="14"
               ml="16"
               fontWeight="bold"
               color="black"
+              fontSize={{ base: '18px', md: '24px', lg: '32px' }}
             >
               Marketplace
             </Text>
@@ -204,7 +204,7 @@ const Marketplace = () => {
             Extensions by Airtable
       </Text>
       <SimpleGrid
-          columns={[4, null, 2]}
+          minChildWidth='350px'
           marginTop="12"
           spacing="40px"
           width={'90%'}
@@ -248,7 +248,8 @@ const Marketplace = () => {
             Extensions by Airtable
       </Text>
       <SimpleGrid
-          columns={[4, null, 2]}
+          // columns={[4, null, 2]}
+          minChildWidth='350px'
           marginTop="12"
           spacing="40px"
           width={'90%'}
@@ -293,7 +294,7 @@ const Marketplace = () => {
             Extensions by Airtable
       </Text>
       <SimpleGrid
-          columns={[4, null, 2]}
+          minChildWidth='350px'
           marginTop="12"
           spacing="40px"
           width={'90%'}
@@ -353,6 +354,31 @@ const Marketplace = () => {
               Learn how to remix open source extensions
             </Text>
         </Box>
+        <Box p={4} display={{ md: 'flex' }}>
+  <Box flexShrink={0}>
+    <Image
+      borderRadius='lg'
+      width={{ md: 40 }}
+      src='https://bit.ly/2jYM25F'
+      alt='Woman paying for a purchase'
+    />
+  </Box>
+  <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+    <Text
+      fontWeight='bold'
+      textTransform='uppercase'
+      fontSize='sm'
+      letterSpacing='wide'
+    >
+      Marketing
+    </Text>
+    <Text mt={2} color='gray.500'>
+      Getting a new business off the ground is a lot of hard work. Here are five
+      ideas you can use to find your first customers.
+    </Text>
+  </Box>
+</Box>
+
     </>
   );
 };

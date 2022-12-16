@@ -7,7 +7,8 @@ import Marketplace from './Marketplace'
 import Signup from './SignUP'
 import WorkSpace from '../component/hirak/WorkSpace'
 import Base from '../component/hirak/Base'
-// import CreaetWorkspaces from '../component/hirak/CreaetWorkspaces'
+//import CreaetWorkspaces from '../component/hirak/CreaetWorkspaces'
+import Price from './price'
 
 const AllRoutes = () => {
   return (
@@ -19,7 +20,7 @@ const AllRoutes = () => {
       <Route path="/marketplace" element={<Marketplace/>} />
       <Route path="/workspace" element={<WorkSpace/>} />
       <Route path="/base" element={<Base/>} />
-      {/* <Route path="/createws" element={<CreaetWorkspaces/>} /> */}
+      <Route path="/price" element={<Price/>} />
     </Routes>
   );
 }

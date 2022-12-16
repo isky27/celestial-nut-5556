@@ -54,13 +54,46 @@ const Footer = () => {
   return (
     <Box>
         <Box color={useColorModeValue('gray.700', 'gray.200')}>
-    <Container as={Stack} maxW={'6xl'} py={10}>
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
+    <Container as={Stack} maxW={'7xl'} py={10}>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 5 }} spacing={'4rem'}>
         <Stack align={'flex-start'} fontSize={'1.2rem'}>
-          <ListHeader>Product</ListHeader>
-          <Link href={'#'}>Overview</Link>
+          <ListHeader>Popular Templates</ListHeader>
+          <Link href={'#'}>Content Calender</Link>
+          <Link href={'#'}>Product Roadmap</Link>
+          <Link href={'#'}>Inventory Tracking</Link>
+          <Link href={'#'}>Marketing Campaign Tracking</Link>
+          <Link href={'#'}>Event Planning</Link>
+        </Stack>
+        <Stack align={'flex-start'} fontSize={'1.2rem'}>
+          <ListHeader>Popular Extensions</ListHeader>
+          <Link href={'#'}>Miro Us</Link>
+          <Link href={'#'}>Jira</Link>
+          <Link href={'#'}>Clearbit</Link>
+          <Link href={'#'}>Loom</Link>
+          <Link href={'#'}>FormStack</Link>
+        </Stack>
+        <Stack align={'flex-start'} fontSize={'1.2rem'}>
+          <ListHeader>Popular Solutions</ListHeader>
+          <Link href={'#'}>Marketing</Link>
+          <Link href={'#'}>Product Operations</Link>
+          <Link href={'#'}>Human Resources</Link>
+          <Link href={'#'}>Sales</Link>
+          <Link href={'#'}>Operations</Link>
+        </Stack>
+        <Stack align={'flex-start'} fontSize={'1.2rem'}>
+          <ListHeader>Learn More</ListHeader>
           <Stack direction={'row'} align={'center'} spacing={2} >
-            <Link href={'#'}>Features</Link>
+          <Link href={'#'}>Webinars</Link>
+            <Tag
+              size={'sm'}
+              bg={useColorModeValue('blue.300', 'blue.800')}
+              ml={2}
+              color={'white'}>
+              Popular
+            </Tag>
+          </Stack>
+          <Stack direction={'row'} align={'center'} spacing={2} >
+          <Link href={'#'}>Demos</Link>
             <Tag
               size={'sm'}
               bg={useColorModeValue('green.300', 'green.800')}
@@ -69,33 +102,26 @@ const Footer = () => {
               New
             </Tag>
           </Stack>
-          <Link href={'#'}>Tutorials</Link>
-          <Link href={'#'}>Pricing</Link>
-          <Link href={'#'}>Releases</Link>
+          <Link href={'#'}>Guides</Link>
+          <Link href={'#'}>Articles</Link>
+          <Link href={'#'}>Community</Link>
         </Stack>
         <Stack align={'flex-start'} fontSize={'1.2rem'}>
           <ListHeader>Company</ListHeader>
-          <Link href={'#'}>About Us</Link>
-          <Link href={'#'}>Press</Link>
+          <Link href={'#'}>About</Link>
+          <Stack direction={'row'} align={'center'} spacing={2} >
           <Link href={'#'}>Careers</Link>
-          <Link href={'#'}>Contact Us</Link>
-          <Link href={'#'}>Partners</Link>
-        </Stack>
-        <Stack align={'flex-start'} fontSize={'1.2rem'}>
-          <ListHeader>Legal</ListHeader>
-          <Link href={'#'}>Cookies Policy</Link>
-          <Link href={'#'}>Privacy Policy</Link>
-          <Link href={'#'}>Terms of Service</Link>
-          <Link href={'#'}>Law Enforcement</Link>
+            <Tag
+              size={'sm'}
+              bg={useColorModeValue('blue.300', 'blue.800')}
+              ml={2}
+              color={'white'}>
+              Popular
+            </Tag>
+          </Stack>
+          <Link href={'#'}>Blog</Link>
           <Link href={'#'}>Status</Link>
-        </Stack>
-        <Stack align={'flex-start'} fontSize={'1.2rem'}>
-          <ListHeader>Follow Us</ListHeader>
-          <Link href={'#'}>Facebook</Link>
-          <Link href={'#'}>Twitter</Link>
-          <Link href={'#'}>Dribbble</Link>
-          <Link href={'#'}>Instagram</Link>
-          <Link href={'#'}>LinkedIn</Link>
+          <Link href={'#'}>Newsroom</Link>
         </Stack>
       </SimpleGrid>
     </Container>
@@ -148,7 +174,7 @@ const Footer = () => {
           </SocialButton>
         </Stack>
       </Container>
-    </Box>
+        </Box>
     </Box>
   )
 }
