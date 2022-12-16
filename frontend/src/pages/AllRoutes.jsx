@@ -5,6 +5,7 @@ import Login from "./Login"
 import Interfacedesigner from './Interface-designer'
 import Marketplace from './Marketplace'
 import Signup from './SignUP'
+import Price from './price'
 
 const AllRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AllRoutes = () => {
       <Route path="/signup" element={<Signup/>} />
       <Route path="/interface" element={<Interfacedesigner/>} />
       <Route path="/marketplace" element={<Marketplace/>} />
+      <Route path="/price" element={<Price/>} />
     </Routes>
   );
 }
