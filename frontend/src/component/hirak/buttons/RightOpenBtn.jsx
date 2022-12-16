@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
+
 const RightOpenBtn = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -27,67 +28,10 @@ const RightOpenBtn = () => {
           >
             Open
           </Button>
-          {/* <Drawer
-            isOpen={isOpen}
-            placement="left"
-            onClose={onClose}
-            finalFocusRef={btnRef}
-          >
-            <DrawerContent>
-              <Button
-                width="100%"
-                borderRadius="0px"
-                background="white"
-                marginTop="1rem"
-                color="gray.600"
-                border="1px solid gray"
-              >
-                All Workspaces
-              </Button>
-              <Divider orientation="horizontal" marginTop="1rem" />
-
-              <Button
-                size="md"
-                width="100%"
-                borderRadius="0px"
-                // border="1px solid green"
-                background="white"
-                border="1px solid gray"
-                marginTop="1rem"
-                fontSize="15px"
-            fontWeight="medium"
-              >
-                Templates
-              </Button>
-
-              <Button
-              size="md"
-              width="100%"
-              borderRadius="0px"
-            //   border="1px solid green"
-              background="white"
-              border="1px solid gray"
-              marginTop="0.5rem"
-              >
-                All Workspaces
-              </Button>
-
-              <Button
-                size="md"
-                width="100%"
-                borderRadius="0px"
-                border="1px solid gray"
-                background="white"
-                // borderColor="gray.500"
-                marginTop="0.5rem"
-              >
-                All Workspaces
-              </Button>
-            </DrawerContent>
-          </Drawer> */}
-          {/* For Logo */}
-          <Box w="60%" border="1px solid green">
+          
+          <Box w="60%">
             {/* Add Logo here */}
+            <img src="https://i.postimg.cc/KvnhWC67/Whats-App-Image-2022-12-16-at-21-08-41.jpg" alt="" />
           </Box>
         </Flex>
       </Box>
