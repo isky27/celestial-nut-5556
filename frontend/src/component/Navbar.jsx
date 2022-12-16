@@ -14,6 +14,7 @@ import {
     useColorModeValue,
     useBreakpointValue,
     useDisclosure,
+    Image
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -21,6 +22,7 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
 import Flag from './Flag';
+import logo1 from "../Assets/logo.png"
   
   export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure();
@@ -28,18 +30,15 @@ import Flag from './Flag';
     const isAuth = false
   
     return (
-      <Box>
+      <Box position="fixed" width="100%">
         <Flag/>
-        <Box padding={'10px'}>
+        <Box>
         <Flex
           bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
           py={{ base: 2 }}
           px={{ base: 4 }}
-          // borderBottom={1}
-          // borderStyle={'solid'}
-          // borderColor={useColorModeValue('gray.200', 'gray.900')}
           align={'center'}>
           <Flex
             flex={{ base: 1, md: 'auto' }}
@@ -55,12 +54,10 @@ import Flag from './Flag';
             />
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-            <Text
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              fontFamily={'heading'}
-              color={useColorModeValue('gray.800', 'white')}>
-              Logo
-            </Text>
+            <Box>
+               {/* <Image src={logo1} width="100%" /> */}
+               Logo
+            </Box>
   
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
@@ -163,7 +160,7 @@ import Flag from './Flag';
     );
   };
   
-  const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+  const DesktopSubNav = ({ label, href, subLabel }) => {
     return (
       <Link
         href={href}
@@ -210,7 +207,7 @@ import Flag from './Flag';
     );
   };
   
-  const MobileNavItem = ({ label, children, href }: NavItem) => {
+  const MobileNavItem = ({ label, children, href }) => {
     const { isOpen, onToggle } = useDisclosure();
   
     return (
@@ -251,14 +248,14 @@ import Flag from './Flag';
     );
   };
   
-  interface NavItem {
-    label: string;
-    subLabel?: string;
-    children?: Array<NavItem>;
-    href?: string;
-  }
+  // interface NavItem {
+  //   label: string;
+  //   subLabel?: string;
+  //   children?: Array<NavItem>;
+  //   href?: string;
+  // }
   
-  const NAV_ITEMS: Array<NavItem> = [
+  const NAV_ITEMS = [
     {
       label: 'Product',
     },
