@@ -1,8 +1,20 @@
 import { Box, Button, Flex, Heading, Spacer } from "@chakra-ui/react";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Bloc from "./Bloc";
 
-const CreaetWorkspaces = () => {
+const CreaetWorkspaces = ({ name, deleteFunction, addBase }) => {
+  const [arr, setArr] = useState([]);
+  // const navigate = useNavigate();
+  const addNavigate = () => {
+    addBase();
+    // navigate("/base");
+  };
+
+  useEffect(() => {
+    setArr(new Array(name[1]).fill(1));
+  }, [name]);
+
   return (
     <div>
       {/* Append all Base inside this box */}
@@ -15,21 +27,20 @@ const CreaetWorkspaces = () => {
         <Flex>
           <Box p="4" width="15%">
             <Heading fontSize="25px" fontFamily="cursive" fontWeight="500">
-              workspaces 1
+              {name[0]}
             </Heading>
           </Box>
           <Spacer />
           <Box p="6" width="25%">
             <Flex gap="20px">
-              <Link to="/base">
-                <Button
-                  height="30px"
-                  boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
-                  fontWeight="normal"
-                >
-                  Create a base
-                </Button>
-              </Link>
+              <Button
+                onClick={() => addNavigate()}
+                height="30px"
+                boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
+                fontWeight="normal"
+              >
+                Create a base
+              </Button>
 
               <Button
                 height="30px"
@@ -39,6 +50,7 @@ const CreaetWorkspaces = () => {
                 Share
               </Button>
               <Button
+                onClick={() => deleteFunction()}
                 //   width="20%"
                 height="30px"
                 boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
@@ -49,8 +61,11 @@ const CreaetWorkspaces = () => {
             </Flex>
           </Box>
         </Flex>
-
-        {/* Here */}
+        {arr.map((e, index) => (
+          <Link to="/base">
+            <Bloc key={index} name={index} />
+          </Link>
+        ))}
       </Box>
     </div>
   );

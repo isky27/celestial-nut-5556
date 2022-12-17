@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import RightOpenBtn from "./buttons/RightOpenBtn";
 import { BellIcon, QuestionIcon, Search2Icon } from "@chakra-ui/icons";
-import AllworkSpaces from "./AllworkSpaces";
+import AddTodo from "./AddTodo";
 
 const WorkSpace = () => {
   return (
@@ -78,7 +78,7 @@ const WorkSpace = () => {
           </Box>
         </Flex>
       </Box>
-      <AllworkSpaces/>
+      <AddTodo/>
     </>
   );
 };
