@@ -123,36 +123,59 @@ const Marketplace = () => {
   return (
     <>  
       <Box
+         height={[
+          '268',
+          '268',
+          '268', 
+          '262',
+        ]}
         style={{
           backgroundImage: `url(${"https://static.airtable.com/images/marketplace_banner@2x.png"})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "contain",
-          height: 200,
           width: "100%",
         }}
       >
-        <Box height="96" w="100%" display="flex" marginTop="8">
-          <Box p="4" height="100%" width="68%">
+        <Box w="100%" display="flex" marginTop="8">
+          <Box  height="100%" width={[
+                '60%', // 0-30em
+                '48%', // 30em-48em
+                '52%', // 48em-62em
+                '68%', // 62em+
+              ]}>
             <Text
               marginTop="14"
-              ml="16"
+              ml={[8,12,14, 16]}
               fontWeight="bold"
               color="black"
               fontSize={{ base: '18px', md: '24px', lg: '32px' }}
             >
               Marketplace
             </Text>
-            <Text fontSize="xl" ml="16" mt="4" color="black">
+            <Text fontSize={['sm', 'md', 'lg', 'xl']} ml={[8,12,14, 16]} mt="4" color="black">
               Analyze, enrich, and take action on your data with Airtable
               Extensions.
             </Text>
           </Box>
-          <Box p="4" width="42%" display="flex" justifyContent="center">
+          <Box p="4" width={[
+                '40%', // 0-30em
+                '52%', // 30em-48em
+                '48%', // 48em-62em
+                '42%', // 62em+
+              ]} display="flex" justifyContent="center">
             <Button
-              mt="20"
+              mt={[16, 16, 20, 20]}
+              ml={[4,12,18, 20]}
+              mr={[-40,4,4, 2]}
+              width={[
+                '280%', // 0-30em
+                '86%', // 30em-48em
+                '64%', // 48em-62em
+                '52%', // 62em+
+              ]}
               leftIcon={<Search2Icon />}
               colorScheme="white"
-              fontSize="xl"
+              fontSize={['sm', 'md', 'lg', 'xl']}
               color="gray.400"
               border="2px solid "
             >
@@ -205,6 +228,7 @@ const Marketplace = () => {
       </Text>
       <SimpleGrid
           minChildWidth='350px'
+
           marginTop="12"
           spacing="40px"
           width={'90%'}
@@ -294,7 +318,7 @@ const Marketplace = () => {
             Extensions by Airtable
       </Text>
       <SimpleGrid
-          minChildWidth='350px'
+          minChildWidth='360px'
           marginTop="12"
           spacing="40px"
           width={'90%'}
@@ -334,23 +358,28 @@ const Marketplace = () => {
             View all scripts
             </Button>
         </Box>
-        <Box w='90%' margin={'auto'} mt='12'>
-            <Image borderRadius='12' src='https://static.airtable.com/images/open_source@2x.png' />
+        <Box w='full'margin={'auto'} mt='12' ml={[20, 0, 0, 0]}>
+            <Image width='100%' borderRadius='12' src='https://static.airtable.com/images/open_source@2x.png' />
         </Box>
         <Box w='100%' textAlign={'center'}>
-            <Text fontSize='xl' fontWeight={'bold'} mt='8'>
+            <Text fontSize='xl' fontWeight={'bold'}  ml={[20, 10, 0, 0]} mt='8'>
                 Open Source extensions
             </Text>
-            <Text fontSize='14' fontWeight={'400'} mt='4' color='gray'>
+            <Text fontSize='14'  ml={[24, 0, 0, 0]} fontWeight={'400'} mt='4' color='gray'>
             The Airtable community has developed and published over 150 open source extensions on GitHub.
             </Text>
-            <Text fontSize='14' fontWeight={'400'} color='gray'>
+            <Text fontSize='14'  ml={[24, 0, 0, 0]}  fontWeight={'400'} color='gray'>
             Remix open source extensions and customize them to fit your own workflows.
             </Text>
-            <Button colorScheme={'blue'} height='10' fontSize={'s'} borderRadius='28' mt='4' color='white'>
+            <Button width={[
+                '150%', // 0-30em
+                '65%', // 30em-48em
+                '42%', // 48em-62em
+                '32%', // 62em+
+              ]} lineHeight='normal' colorScheme={'blue'} height='10' fontSize={'s'} borderRadius='28' mt='4'  ml={[20, 0, 0, 0]} color='white'>
                 View all open sources extensions on GitHub
             </Button>
-            <Text fontSize={'14'} color='blue' mt={'2'}>
+            <Text fontSize={'14'} color='blue' mt={'2'}  ml={[24, 0, 0, 0]} >
               Learn how to remix open source extensions
             </Text>
         </Box>
