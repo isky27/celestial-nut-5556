@@ -1,3 +1,4 @@
+import React from 'react'
 import {
     Box,
     Flex,
@@ -12,9 +13,15 @@ import {
     HStack,
     PopoverTrigger,
     useColorModeValue,
-    useBreakpointValue,
-    useDisclosure,
-    Image
+    Image,Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    Input,
+    useDisclosure
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -22,21 +29,22 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
 import Flag from './Flag';
-import logo1 from "../Assets/logo.png"
+import logo from "../Assets/logo.png"
   
   export default function WithSubnavigation() {
-    const { isOpen, onToggle } = useDisclosure();
+    const { isOpen, onToggle , onOpen, onClose } = useDisclosure();
+    
 
     const isAuth = false
   
     return (
       <Box position="fixed" width="100%">
         <Flag/>
-        <Box>
+        <Box >
         <Flex
           bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
-          minH={'60px'}
+          // minH={'60px'}
           py={{ base: 2 }}
           px={{ base: 4 }}
           align={'center'}>
@@ -54,9 +62,8 @@ import logo1 from "../Assets/logo.png"
             />
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-            <Box>
-               {/* <Image src={logo1} width="100%" /> */}
-               Logo
+            <Box width="15%">
+               <Image src={logo} width="100%" />
             </Box>
   
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -129,31 +136,63 @@ import logo1 from "../Assets/logo.png"
     );
   }
   
-  const DesktopNav = () => {
+  const DesktopNav = ({ children, ...rest }) => {
     const linkColor = useColorModeValue('gray.600', 'gray.200');
     const linkHoverColor = useColorModeValue('gray.800', 'white');
     const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+
+    const { isOpen , onOpen, onClose } = useDisclosure();
+    const btnRef = React.useRef();
   
     return (
       <Stack direction={'row'} spacing={4}>
         {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
+          <Box key={navItem.label} display="flex" justifyContent={'center'} alignItems="center" >
             <Popover trigger={'hover'} placement={'bottom-start'}>
               <PopoverTrigger>
                 <Link
                   p={2}
-                  href={navItem.href ?? '#'}
+                  // href={navItem.href ?? '#'}
                   fontSize={'lg'}
                   fontWeight={500}
                   color={linkColor}
                   _hover={{
                     textDecoration: 'none',
                     color: linkHoverColor,
-                  }}>
+                  }}
+                  ref={btnRef} onClick={onOpen}>
                   {navItem.label}
                 </Link>
               </PopoverTrigger>
             </Popover>
+            <Drawer
+        variant="alwaysOpen"
+        {...rest}
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        trapFocus={false}
+        closeOnOverlayClick={false}
+        blockScrollOnMount={false}
+        size={'lg'}
+      >
+        {/* <DrawerOverlay /> */}
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Create your account</DrawerHeader>
+
+          <DrawerBody>
+            <Input placeholder="Type here..." />
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant="outline" mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button colorScheme="blue">Save</Button>
+          </DrawerFooter>
+        </DrawerContent>
+            </Drawer>
           </Box>
         ))}
       </Stack>
@@ -272,3 +311,22 @@ import logo1 from "../Assets/logo.png"
       label: 'Solutions',
     }
   ];
+
+  const drawer_items=[
+    {
+      label:["Overview", "Features","Integrations",
+      "Enterprise Overview","Maketplace","Download Apps"]
+    },
+    {
+      label:["Overview", "Features","Integrations",
+      "Enterprise Overview","Maketplace","Download Apps"]
+    },
+    {
+      label:["Overview", "Features","Integrations",
+      "Enterprise Overview","Maketplace","Download Apps"]
+    },
+    {
+      label:["Webinars", "Features","Integrations",
+      "Enterprise Overview","Maketplace","Download Apps"]
+    },
+  ]
