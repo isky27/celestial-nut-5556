@@ -19,7 +19,7 @@ import Footer from './Footer';
 const MidContent = () => {
   return (
     <Box>
-          <Box bg={'#ebf7fc'} display="flex" justifyContent="center" alignItems="center" gap={'5rem'} padding="10rem" >
+          <Box bg={'#ebf7fc'} display="flex" justifyContent="center" alignItems="center" gap={'5rem'} padding="15rem" >
              <Box>
                 <VStack spacing='2.5rem' align="left">
                    <Text fontSize={'6rem'} fontWeight={'600'} color={'hsl(0,0%,20%)'} lineHeight={'6rem'}>Connect <br></br> everything.<br></br> Achieve<br></br> anything.</Text>
@@ -117,7 +117,7 @@ const MidContent = () => {
 
           <Box bg={'#FAF2F4'}  display="flex" flexDirection={'column'} justifyContent="center" alignItems="center" gap={'4rem'} padding={'5rem'} >
              <Box>
-                <HStack spacing='6rem' justifyContent="center" alignItems="center" >
+                <HStack spacing='10rem' justifyContent="center" alignItems="center" >
                    <Text fontSize={'1.6rem'}  fontWeight={'bold'} color={'#0768f8'} >Read all customer stories</Text>
                    <Text fontSize={'4rem'} fontWeight={'600'} color={'hsl(0,0%,20%)'} lineHeight={'4rem'}>Trusted by teams<br></br> from all industries</Text>
                 </HStack>

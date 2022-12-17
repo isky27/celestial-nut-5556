@@ -15,12 +15,15 @@ import {
   AccordionIcon,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import Footer from "../component/Footer";
+import Navbar from "../component/Navbar"
 
 function Price() {
   return (
     <Box>
+      <Navbar />
       <Box h={{base : "30px",mg:"40px",lg: "50px"}} bgGradient="linear(to-r, blue, purple)">
-        <Text pt={{base:"6px",md:"8px",lg:"10px"}}  pb={{base:"6px",md:"8px",lg:"10px"}} fontWeight={600} fontSize={{base : "16px",md:"17px",lg:"18px"}} color={"white"}>
+        <Text pt={{base:"6px",md:"8px",lg:"10px"}} textAlign={"center"}  pb={{base:"6px",md:"8px",lg:"10px"}} fontWeight={600} fontSize={{base : "16px",md:"17px",lg:"18px"}} color={"white"}>
           ✨ Sign up today and try the Pro plan for free
         </Text>
       </Box>
@@ -397,7 +400,7 @@ function Price() {
       </Center>
 
       {/* FAQ  */}
-      <Box ml={{base : 1,md:10,lg:20}} mr={{base : 1,md:10,lg:20}}>
+      <Box mb={10} ml={{base : 1,md:10,lg:20}} mr={{base : 1,md:10,lg:20}}>
         <Text fontSize={"35px"} fontWeight={500} m={5}>
           Frequently asked questions
         </Text>
@@ -546,6 +549,7 @@ function Price() {
           </AccordionItem>
         </Accordion>
       </Box>
+      <Footer />
     </Box>
   );
 }
