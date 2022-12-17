@@ -219,69 +219,9 @@ const Base = () => {
                   <GrShare />
                   Share view
                 </Button>
-                {/* </Box> */}
               </Flex>
             </Box>
-            <Sheet/>
-            {/* <TableContainer>
-              <Table>
-                <Thead>
-                  <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th>multiply by</Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  <Tr>
-                    <Td>
-                      <Input />
-                    </Td>
-                    <Td>
-                      <Input />
-                    </Td>
-                    <Td>
-                      <Input />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td>
-                      <Input />
-                    </Td>
-                    <Td>
-                      <Input />
-                    </Td>
-                    <Td>
-                      <Input />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td>
-                      <Input />
-                    </Td>
-                    <Td>
-                      <Input />
-                    </Td>
-                    <Td>
-                      <Input />
-                    </Td>
-                  </Tr>
-                </Tbody>
-                <Tfoot>
-                  <Tr>
-                    <Td>
-                      <Input />
-                    </Td>
-                    <Td>
-                      <Input />
-                    </Td>
-                    <Td>
-                      <Input />
-                    </Td>
-                  </Tr>
-                </Tfoot>
-              </Table>
-            </TableContainer> */}
+            <Sheet />
           </TabPanel>
         </TabPanels>
       </Tabs>

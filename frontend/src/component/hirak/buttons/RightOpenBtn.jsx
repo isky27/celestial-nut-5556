@@ -2,19 +2,15 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
-  Divider,
-  Drawer,
-  DrawerContent,
   Flex,
   IconButton,
-  Image,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 
 
 const RightOpenBtn = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {onOpen} = useDisclosure();
   const btnRef = React.useRef();
   return (
     <div>
