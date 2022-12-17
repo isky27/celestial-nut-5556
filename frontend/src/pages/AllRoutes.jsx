@@ -9,6 +9,7 @@ import WorkSpace from '../component/hirak/WorkSpace'
 import Base from '../component/hirak/Base'
 //import CreaetWorkspaces from '../component/hirak/CreaetWorkspaces'
 import Price from './price'
+import Template from './template'
 
 const AllRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AllRoutes = () => {
       <Route path="/workspace" element={<WorkSpace/>} />
       <Route path="/base" element={<Base/>} />
       <Route path="/price" element={<Price/>} />
+      <Route path="/template" element={<Template/>} />
     </Routes>
   );
 }
