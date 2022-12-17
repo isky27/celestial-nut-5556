@@ -3,7 +3,7 @@ import { USER_SIGNUP, USER_SIGNUP_ERROR } from "./userSignup.type"
 const initialState = {
     isAuth: false,
     isError: false,
-    isErrorMsg: ""
+    isErrorMsg:""
 }
 
 export const userSignupReducer = (state = initialState, { type, payload }) => {
