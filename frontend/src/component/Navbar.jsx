@@ -23,39 +23,42 @@ import {
     useDisclosure,
     SimpleGrid
   } from '@chakra-ui/react';
-  import {
-    HamburgerIcon,
-    CloseIcon,
-    ChevronRightIcon,
-  } from '@chakra-ui/icons';
+  import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import Flag from './Flag';
 import logo from "../Assets/logo.png"
 
-import { Navigate, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const drawer_items=[
     {
       label:[
         {item:"Overview"},
         {item:"Features"},
+        {item:"Templates", to:"/template"},
         {item:"Integrations"},
         {item:"Enterprise Overview"},
         {item:"Maketplace", to:"/marketplace"},
-        {item:"Download Apps"}
-       ]
+        { item:"Interface Designer", to:"/interface"}
+       
+       ],
+       color:"pink.300"
     },
     {
       label:[
        { item:"By Time"}, 
        {item:"By Use Case"}, 
        { item:"See all solutions"},
-       { item:"Interface Designer", to:"/interface"}]
+       {item:"Download Apps"}
+       ],
+       color:"green.600"
     },
     {
       label:[
         {item:"Enterprise Overview"},
         {item:"Enterprise Services"},
-        {item:"Enterprise Security"}]
+        {item:"Enterprise Security"}],
+        color:"blue.600"
     },
     {
       label:[
@@ -66,10 +69,10 @@ const drawer_items=[
         {item:"Blog"},
         {item:"API Docs"},
         {item:"Developer Community"},
-        {item:"Templates", to:"/template"},
         {item:"Universe"},
         {item:"Customer Stories"},
-        {item:"Contact Support"}]
+        {item:"Contact Support"}],
+        color:"green.600"
     },
   ]
 
@@ -77,66 +80,55 @@ import { useNavigate } from 'react-router-dom';
   
   export default function WithSubnavigation() {
     const { isOpen, onToggle , onOpen, onClose } = useDisclosure();
-    const navigate = useNavigate()
-
-    const isAuth = false
   
     return (
       <Box position="fixed" width="100%">
-        <Flag />
-        <Box>
+        <Flag/>
+        <Box >
+        <Flex
+          bg={useColorModeValue('white','gray.800')}
+          color={useColorModeValue('gray.600','white')}
+          // minH={'60px'}
+          py={{ base: 2 }}
+          px={{ base: 4 }}
+          align={'center'}>
           <Flex
-            bg={useColorModeValue("white", "gray.800")}
-            color={useColorModeValue("gray.600", "white")}
-            // minH={'60px'}
-            py={{ base: 2 }}
-            px={{ base: 4 }}
-            align={"center"}
-          >
-            <Flex
-              flex={{ base: 1, md: "auto" }}
-              ml={{ base: -2 }}
-              display={{ base: "flex", md: "none" }}
-            >
-              <IconButton
-                onClick={onToggle}
-                icon={
-                  isOpen ? (
-                    <CloseIcon w={3} h={3} />
-                  ) : (
-                    <HamburgerIcon w={5} h={5} />
-                  )
-                }
-                variant={"ghost"}
-                aria-label={"Toggle Navigation"}
-              />
+            flex={{ base: 1, md: 'auto' }}
+            ml={{ base: -2 }}
+            display={{ base: 'flex', md: 'none' }}>
+            <IconButton
+              onClick={onToggle}
+              icon={
+                isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+              }
+              variant={'ghost'}
+              aria-label={'Toggle Navigation'}
+            />
+          </Flex>
+          <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+            <Box width="15%">
+               <Image src={logo} width="100%" />
+            </Box>
+  
+            <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+              <DesktopNav />
             </Flex>
-            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-              <Box width="15%">
-                <Image src={logo} width="100%" />
-              </Box>
-
-              <Flex display={{ base: "none", md: "flex" }} ml={10}>
-                <DesktopNav />
-              </Flex>
-            </Flex>
-
-            {!isAuth ? (
-              <Stack
+          </Flex>
+  
+          {
+            !isAuth ? (<Stack
                 flex={{ base: 1, md: 0 }}
-                justify={"flex-end"}
-                direction={"row"}
-                spacing={6}
-              >
+                justify={'flex-end'}
+                direction={'row'}
+                spacing={6}>
                 <Button
-                  as={"a"}
-                  fontSize={"lg"}
+                  as={'a'}
+                  fontSize={'lg'}
                   fontWeight={400}
-                  border={"3px solid grey"}
+                  border={'3px solid grey'}
                   borderRadius="8px"
-                  bg={"none"}
-                  href={"#"}
-                >
+                  bg={'none'}
+                  href={'#'}>
                   Contact Sales
                 </Button>
                 <Button
@@ -243,23 +235,24 @@ import { useNavigate } from 'react-router-dom';
                      <DrawerBody>
                         {
                           drawer_items.map((item)=>(
-                            <SimpleGrid columns={2} spacing={10}>
-                                <Box key={item.label}>
+                            <SimpleGrid columns={2}  >
+                                
                                 {
                                   item.label.map((el)=>(
-                                    <Link to={el.to}>
-                                        <Text p={2}
+                                   <Box marginTop={'1rem'}>
+                                         <Link to={el.to}>
+                                         <Text p={2}
                                           fontSize={'lg'}
                                           fontWeight={'500'}
-                                          color={linkColor}
+                                          color={item.color}
                                           _hover={{
                                           textDecoration: 'none',
                                           color: linkHoverColor,
                                           }} >{el.item}</Text>
                                     </Link>
+                                   </Box>
                                   ))
                                 }
-                                </Box>
                             </SimpleGrid>
                           ))
                         }
