@@ -23,38 +23,40 @@ import {
     useDisclosure,
     SimpleGrid
   } from '@chakra-ui/react';
-  import {
-    HamburgerIcon,
-    CloseIcon,
-    ChevronRightIcon,
-  } from '@chakra-ui/icons';
+  import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import Flag from './Flag';
 import logo from "../Assets/logo.png"
-import { Navigate, Link, useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 
 const drawer_items=[
     {
       label:[
         {item:"Overview"},
         {item:"Features"},
+        {item:"Templates", to:"/template"},
         {item:"Integrations"},
         {item:"Enterprise Overview"},
         {item:"Maketplace", to:"/marketplace"},
-        {item:"Download Apps"}
-       ]
+        { item:"Interface Designer", to:"/interface"}
+       
+       ],
+       color:"pink.300"
     },
     {
       label:[
        { item:"By Time"}, 
        {item:"By Use Case"}, 
        { item:"See all solutions"},
-       { item:"Interface Designer", to:"/interface"}]
+       {item:"Download Apps"}
+       ],
+       color:"green.600"
     },
     {
       label:[
         {item:"Enterprise Overview"},
         {item:"Enterprise Services"},
-        {item:"Enterprise Security"}]
+        {item:"Enterprise Security"}],
+        color:"blue.600"
     },
     {
       label:[
@@ -65,10 +67,10 @@ const drawer_items=[
         {item:"Blog"},
         {item:"API Docs"},
         {item:"Developer Community"},
-        {item:"Templates", to:"/template"},
         {item:"Universe"},
         {item:"Customer Stories"},
-        {item:"Contact Support"}]
+        {item:"Contact Support"}],
+        color:"green.600"
     },
   ]
 
@@ -76,11 +78,9 @@ const drawer_items=[
   export default function WithSubnavigation() {
     const { isOpen, onToggle , onOpen, onClose } = useDisclosure();
     
-
-    const isAuth = false
   
     return (
-      <Box position="fixed" width="100%">
+      <Box>
         <Flag/>
         <Box >
         <Flex
@@ -119,16 +119,6 @@ const drawer_items=[
                 justify={'flex-end'}
                 direction={'row'}
                 spacing={6}>
-                <Button
-                  as={'a'}
-                  fontSize={'lg'}
-                  fontWeight={400}
-                  border={'3px solid grey'}
-                  borderRadius="8px"
-                  bg={'none'}
-                  href={'#'}>
-                  Contact Sales
-                </Button>
                 <Button
                   display={{ base: 'none', md: 'inline-flex' }}
                   fontSize={'lg'}
@@ -228,23 +218,24 @@ const drawer_items=[
                      <DrawerBody>
                         {
                           drawer_items.map((item)=>(
-                            <SimpleGrid columns={2} spacing={10}>
-                                <Box key={item.label}>
+                            <SimpleGrid columns={2}  >
+                                
                                 {
                                   item.label.map((el)=>(
-                                    <Link to={el.to}>
-                                        <Text p={2}
+                                   <Box marginTop={'1rem'}>
+                                         <Link to={el.to}>
+                                         <Text p={2}
                                           fontSize={'lg'}
                                           fontWeight={'500'}
-                                          color={linkColor}
+                                          color={item.color}
                                           _hover={{
                                           textDecoration: 'none',
                                           color: linkHoverColor,
                                           }} >{el.item}</Text>
                                     </Link>
+                                   </Box>
                                   ))
                                 }
-                                </Box>
                             </SimpleGrid>
                           ))
                         }
