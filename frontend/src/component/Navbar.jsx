@@ -207,8 +207,8 @@ const drawer_items = [
   
     return (
       <Stack direction={'row'} spacing={4}>
-        {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label} display="flex" justifyContent={'center'} alignItems="center" >
+        {NAV_ITEMS.map((navItem,index) => (
+          <Box key={index} display="flex" justifyContent={'center'} alignItems="center" >
             <Popover trigger={'hover'} placement={'bottom-start'}>
               <PopoverTrigger>
                 <Link to={navItem.to}>
@@ -244,12 +244,12 @@ const drawer_items = [
 
                      <DrawerBody>
                         {
-                          drawer_items.map((item)=>(
-                            <SimpleGrid columns={2}  >
+                          drawer_items.map((item,index)=>(
+                            <SimpleGrid columns={2} key={index}>
                                 
                                 {
                                   item.label.map((el)=>(
-                                   <Box marginTop={'1rem'}>
+                                   <Box key={el} marginTop={'1rem'}>
                                          <Link to={el.to}>
                                          <Text p={2}
                                           fontSize={'lg'}
@@ -320,8 +320,8 @@ const drawer_items = [
         bg={useColorModeValue('white', 'gray.800')}
         p={4}
         display={{ md: 'none' }}>
-        {NAV_ITEMS.map((navItem) => (
-          <MobileNavItem key={navItem.label} {...navItem} />
+        {NAV_ITEMS.map((navItem,index) => (
+          <MobileNavItem key={index} {...navItem} />
         ))}
       </Stack>
     );

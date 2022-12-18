@@ -64,8 +64,8 @@ const CreaetWorkspaces = ({ name, deleteFunction, addBase }) => {
         </Flex>
         <Flex flexWrap={"wrap"}>
           {arr.map((e, index) => (
-            <Link to="/base">
-              <Bloc key={index} name={index} />
+            <Link key={index} to="/base">
+              <Bloc name={index} />
             </Link>
           ))}
         </Flex>
