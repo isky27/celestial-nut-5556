@@ -5,9 +5,8 @@ import Login from "./Login"
 import Interfacedesigner from './Interface-designer'
 import Marketplace from './Marketplace'
 import Signup from './SignUP'
-import WorkSpace from '../component/hirak/WorkSpace'
-import Base from '../component/hirak/Base'
-//import CreaetWorkspaces from '../component/hirak/CreaetWorkspaces'
+import WorkSpace from '../component/dashboard/WorkSpace'
+import Base from '../component/dashboard/Base'
 import Price from './price'
 import Template from './template'
 

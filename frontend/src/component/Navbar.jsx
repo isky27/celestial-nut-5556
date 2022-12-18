@@ -26,7 +26,9 @@ import {
   import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import Flag from './Flag';
 import logo from "../Assets/logo.png"
-import {Link, useNavigate } from 'react-router-dom';
+
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const drawer_items=[
     {
@@ -74,18 +76,18 @@ const drawer_items=[
     },
   ]
 
-
+import { useNavigate } from 'react-router-dom';
+  
   export default function WithSubnavigation() {
     const { isOpen, onToggle , onOpen, onClose } = useDisclosure();
-    
   
     return (
-      <Box>
+      <Box position="fixed" width="100%">
         <Flag/>
         <Box >
         <Flex
-          bg={useColorModeValue('white', 'gray.800')}
-          color={useColorModeValue('gray.600', 'white')}
+          bg={useColorModeValue('white','gray.800')}
+          color={useColorModeValue('gray.600','white')}
           // minH={'60px'}
           py={{ base: 2 }}
           px={{ base: 4 }}
@@ -120,47 +122,62 @@ const drawer_items=[
                 direction={'row'}
                 spacing={6}>
                 <Button
-                  display={{ base: 'none', md: 'inline-flex' }}
-                  fontSize={'lg'}
-                  fontWeight={600}
-                  color={'white'}
-                  bg={'blue.400'}
-                  href={'#'}
-                  _hover={{
-                    bg: 'blue.600',
-                  }}>
-                  Sign up for free
-                </Button>
-                <Button
                   as={'a'}
                   fontSize={'lg'}
                   fontWeight={400}
+                  border={'3px solid grey'}
+                  borderRadius="8px"
                   bg={'none'}
-                  border={'none'}
                   href={'#'}>
+                  Contact Sales
+                </Button>
+                <Button
+                  display={{ base: "none", md: "inline-flex" }}
+                  fontSize={"lg"}
+                  fontWeight={600}
+                  color={"white"}
+                  bg={"blue.400"}
+                  href={"#"}
+                  _hover={{
+                    bg: "blue.600",
+                  }}
+                  onClick={() => navigate("/signup")}
+                >
+                  Sign up for free
+                </Button>
+                <Button
+                  as={"a"}
+                  fontSize={"lg"}
+                  fontWeight={400}
+                  bg={"none"}
+                  border={"none"}
+                  onClick={() => navigate("/login")}
+                >
                   Sign in
                 </Button>
-              </Stack>):(<Box display={{ base: "none", md: "none", lg: "block" }}>
-              <HStack spacing={25}>
-                <HStack>
-                  <Text fontWeight="semibold" color="whiteAlpha.900">
-                    userName
-                  </Text>
-                </HStack>
+              </Stack>
+            ) : (
+              <Box display={{ base: "none", md: "none", lg: "block" }}>
+                <HStack spacing={25}>
+                  <HStack>
+                    <Text fontWeight="semibold" color="whiteAlpha.900">
+                      userName
+                    </Text>
+                  </HStack>
 
-                <Button
-                  fontWeight="lighter"
-                  colorScheme="messenger"
-                  variant="solid"
-                >
-                  LogOut
-                </Button>
+                  <Button
+                    fontWeight="lighter"
+                    colorScheme="messenger"
+                    variant="solid"
+                  >
+                    LogOut
+                  </Button>
                 </HStack>
-                </Box>)
-          }
-        </Flex>
+              </Box>
+            )}
+          </Flex>
         </Box>
-  
+
         <Collapse in={isOpen} animateOpacity>
           <MobileNav />
         </Collapse>
@@ -172,7 +189,7 @@ const drawer_items=[
     const linkColor = useColorModeValue('gray.600', 'gray.200');
     const linkHoverColor = useColorModeValue('gray.800', 'white');
     const popoverContentBgColor = useColorModeValue('white', 'gray.800');
-
+     
     const { isOpen , onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
 
