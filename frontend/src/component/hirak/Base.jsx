@@ -4,21 +4,12 @@ import {
   Button,
   Flex,
   Heading,
-  Input,
   Spacer,
   Tab,
-  Table,
-  TableContainer,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
 } from "@chakra-ui/react";
 import React from "react";
 import { FiShare2 } from "react-icons/fi";
