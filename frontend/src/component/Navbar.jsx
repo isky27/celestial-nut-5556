@@ -1,3 +1,4 @@
+import React from 'react'
 import {
     Box,
     Flex,
@@ -12,31 +13,40 @@ import {
     HStack,
     PopoverTrigger,
     useColorModeValue,
-    useBreakpointValue,
-    useDisclosure,
+    Image,Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    Input,
+    useDisclosure
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
     CloseIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
+import Flag from './Flag';
+import logo from "../Assets/logo.png"
   
   export default function WithSubnavigation() {
-    const { isOpen, onToggle } = useDisclosure();
+    const { isOpen, onToggle , onOpen, onClose } = useDisclosure();
+    
 
     const isAuth = false
   
     return (
-      <Box>
+      <Box position="fixed" width="100%">
+        <Flag/>
+        <Box >
         <Flex
           bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
-          minH={'60px'}
+          // minH={'60px'}
           py={{ base: 2 }}
           px={{ base: 4 }}
-          borderBottom={1}
-          borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.900')}
           align={'center'}>
           <Flex
             flex={{ base: 1, md: 'auto' }}
@@ -52,12 +62,9 @@ import {
             />
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-            <Text
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              fontFamily={'heading'}
-              color={useColorModeValue('gray.800', 'white')}>
-              Logo
-            </Text>
+            <Box width="15%">
+               <Image src={logo} width="100%" />
+            </Box>
   
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
@@ -72,16 +79,17 @@ import {
                 spacing={6}>
                 <Button
                   as={'a'}
-                  fontSize={'sm'}
+                  fontSize={'lg'}
                   fontWeight={400}
                   border={'3px solid grey'}
+                  borderRadius="8px"
                   bg={'none'}
                   href={'#'}>
                   Contact Sales
                 </Button>
                 <Button
                   display={{ base: 'none', md: 'inline-flex' }}
-                  fontSize={'sm'}
+                  fontSize={'lg'}
                   fontWeight={600}
                   color={'white'}
                   bg={'blue.400'}
@@ -93,7 +101,7 @@ import {
                 </Button>
                 <Button
                   as={'a'}
-                  fontSize={'sm'}
+                  fontSize={'lg'}
                   fontWeight={400}
                   bg={'none'}
                   border={'none'}
@@ -119,6 +127,7 @@ import {
                 </Box>)
           }
         </Flex>
+        </Box>
   
         <Collapse in={isOpen} animateOpacity>
           <MobileNav />
@@ -127,38 +136,70 @@ import {
     );
   }
   
-  const DesktopNav = () => {
+  const DesktopNav = ({ children, ...rest }) => {
     const linkColor = useColorModeValue('gray.600', 'gray.200');
     const linkHoverColor = useColorModeValue('gray.800', 'white');
     const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+
+    const { isOpen , onOpen, onClose } = useDisclosure();
+    const btnRef = React.useRef();
   
     return (
       <Stack direction={'row'} spacing={4}>
         {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
+          <Box key={navItem.label} display="flex" justifyContent={'center'} alignItems="center" >
             <Popover trigger={'hover'} placement={'bottom-start'}>
               <PopoverTrigger>
                 <Link
                   p={2}
-                  href={navItem.href ?? '#'}
-                  fontSize={'sm'}
+                  // href={navItem.href ?? '#'}
+                  fontSize={'lg'}
                   fontWeight={500}
                   color={linkColor}
                   _hover={{
                     textDecoration: 'none',
                     color: linkHoverColor,
-                  }}>
+                  }}
+                  ref={btnRef} onClick={onOpen}>
                   {navItem.label}
                 </Link>
               </PopoverTrigger>
             </Popover>
+            <Drawer
+        variant="alwaysOpen"
+        {...rest}
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        trapFocus={false}
+        closeOnOverlayClick={false}
+        blockScrollOnMount={false}
+        size={'lg'}
+      >
+        {/* <DrawerOverlay /> */}
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Create your account</DrawerHeader>
+
+          <DrawerBody>
+            <Input placeholder="Type here..." />
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant="outline" mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button colorScheme="blue">Save</Button>
+          </DrawerFooter>
+        </DrawerContent>
+            </Drawer>
           </Box>
         ))}
       </Stack>
     );
   };
   
-  const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+  const DesktopSubNav = ({ label, href, subLabel }) => {
     return (
       <Link
         href={href}
@@ -205,7 +246,7 @@ import {
     );
   };
   
-  const MobileNavItem = ({ label, children, href }: NavItem) => {
+  const MobileNavItem = ({ label, children, href }) => {
     const { isOpen, onToggle } = useDisclosure();
   
     return (
@@ -246,14 +287,14 @@ import {
     );
   };
   
-  interface NavItem {
-    label: string;
-    subLabel?: string;
-    children?: Array<NavItem>;
-    href?: string;
-  }
+  // interface NavItem {
+  //   label: string;
+  //   subLabel?: string;
+  //   children?: Array<NavItem>;
+  //   href?: string;
+  // }
   
-  const NAV_ITEMS: Array<NavItem> = [
+  const NAV_ITEMS = [
     {
       label: 'Product',
     },
@@ -267,6 +308,25 @@ import {
       label: 'Enterprise',
     },
     {
-        label: 'Solutions',
+      label: 'Solutions',
     }
   ];
+
+  const drawer_items=[
+    {
+      label:["Overview", "Features","Integrations",
+      "Enterprise Overview","Maketplace","Download Apps"]
+    },
+    {
+      label:["Overview", "Features","Integrations",
+      "Enterprise Overview","Maketplace","Download Apps"]
+    },
+    {
+      label:["Overview", "Features","Integrations",
+      "Enterprise Overview","Maketplace","Download Apps"]
+    },
+    {
+      label:["Webinars", "Features","Integrations",
+      "Enterprise Overview","Maketplace","Download Apps"]
+    },
+  ]
