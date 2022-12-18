@@ -8,7 +8,6 @@ import {
     Stack,
     Collapse,
     Icon,
-    Link,
     Popover,
     HStack,
     PopoverTrigger,
@@ -20,26 +19,22 @@ import {
     DrawerContent,
     DrawerCloseButton,
     Input,
-    useDisclosure
+    useDisclosure,
+    SimpleGrid
   } from '@chakra-ui/react';
-  import {
-    HamburgerIcon,
-    CloseIcon,
-    ChevronRightIcon,
-  } from '@chakra-ui/icons';
+  import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import Flag from './Flag';
 import logo from "../Assets/logo.png"
-import {useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useNavigate,Link } from 'react-router-dom';
   
   export default function WithSubnavigation() {
     const { isOpen, onToggle , onOpen, onClose } = useDisclosure();
     const navigate = useNavigate()
-       const { isAuth } = useSelector((store) => store.userLogin);
+
   
     return (
       <Box position="fixed" width="100%">
-        <Flag />
+      <Flag />
         <Box>
           <Flex
             bg={useColorModeValue("white", "gray.800")}
@@ -51,7 +46,7 @@ import { useSelector } from 'react-redux';
           >
             <Flex
               flex={{ base: 1, md: "auto" }}
-              ml={{base:-2}}
+              ml={{ base: -2 }}
               display={{ base: "flex", md: "none" }}
             >
               <IconButton
@@ -80,19 +75,17 @@ import { useSelector } from 'react-redux';
             {!isAuth ? (
               <Stack
                 flex={{ base: 1, md: 0 }}
-                justify={"flex-end"}
-                direction={"row"}
-                spacing={6}
-              >
+                justify={'flex-end'}
+                direction={'row'}
+                spacing={6}>
                 <Button
-                  as={"a"}
-                  fontSize={"lg"}
+                  as={'a'}
+                  fontSize={'lg'}
                   fontWeight={400}
-                  border={"3px solid grey"}
+                  border={'3px solid grey'}
                   borderRadius="8px"
-                  bg={"none"}
-                  href={"#"}
-                >
+                  bg={'none'}
+                  href={'#'}>
                   Contact Sales
                 </Button>
                 <Button
@@ -156,6 +149,8 @@ import { useSelector } from 'react-redux';
      
     const { isOpen , onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
+
+     const navigate = useNavigate()
   
     return (
       <Stack direction={'row'} spacing={4}>
@@ -163,11 +158,11 @@ import { useSelector } from 'react-redux';
           <Box key={navItem.label} display="flex" justifyContent={'center'} alignItems="center" >
             <Popover trigger={'hover'} placement={'bottom-start'}>
               <PopoverTrigger>
-                <Link
+                <Link to={navItem.to}>
+                <Text
                   p={2}
-                  // href={navItem.href ?? '#'}
                   fontSize={'lg'}
-                  fontWeight={500}
+                  fontWeight={'500'}
                   color={linkColor}
                   _hover={{
                     textDecoration: 'none',
@@ -175,36 +170,56 @@ import { useSelector } from 'react-redux';
                   }}
                   ref={btnRef} onClick={onOpen}>
                   {navItem.label}
+                </Text>
                 </Link>
               </PopoverTrigger>
             </Popover>
             <Drawer
-        variant="alwaysOpen"
-        {...rest}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        trapFocus={false}
-        closeOnOverlayClick={false}
-        blockScrollOnMount={false}
-        size={'lg'}
-      >
+              variant="alwaysOpen"
+              {...rest}
+              isOpen={isOpen}
+              placement="left"
+              onClose={onClose}
+              trapFocus={false}
+              closeOnOverlayClick={false}
+              blockScrollOnMount={false}
+              size={'lg'}>
         {/* <DrawerOverlay /> */}
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+             <DrawerContent>
+                 <DrawerCloseButton />
+                     {/* <DrawerHeader>Create your account</DrawerHeader> */}
 
-          <DrawerBody>
-            <Input placeholder="Type here..." />
-          </DrawerBody>
+                     <DrawerBody>
+                        {
+                          drawer_items.map((item)=>(
+                            <SimpleGrid columns={2}  >
+                                
+                                {
+                                  item.label.map((el)=>(
+                                   <Box marginTop={'1rem'}>
+                                         <Link to={el.to}>
+                                         <Text p={2}
+                                          fontSize={'lg'}
+                                          fontWeight={'500'}
+                                          color={item.color}
+                                          _hover={{
+                                          textDecoration: 'none',
+                                          color: linkHoverColor,
+                                          }} >{el.item}</Text>
+                                    </Link>
+                                   </Box>
+                                  ))
+                                }
+                            </SimpleGrid>
+                          ))
+                        }
+                     </DrawerBody>
 
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
-        </DrawerContent>
+                     <DrawerFooter>
+                         <Button variant="outline" mr={3} onClick={onClose}>Cancel </Button>
+                         <Button colorScheme="blue">Save</Button>
+                     </DrawerFooter>
+              </DrawerContent>
             </Drawer>
           </Box>
         ))}
@@ -316,6 +331,7 @@ import { useSelector } from 'react-redux';
     },
     {
       label: 'Pricing',
+      to:"/price"
     },
     {
       label: 'Enterprise',
@@ -325,21 +341,6 @@ import { useSelector } from 'react-redux';
     }
   ];
 
-  const drawer_items=[
-    {
-      label:["Overview", "Features","Integrations",
-      "Enterprise Overview","Maketplace","Download Apps"]
-    },
-    {
-      label:["Overview", "Features","Integrations",
-      "Enterprise Overview","Maketplace","Download Apps"]
-    },
-    {
-      label:["Overview", "Features","Integrations",
-      "Enterprise Overview","Maketplace","Download Apps"]
-    },
-    {
-      label:["Webinars", "Features","Integrations",
-      "Enterprise Overview","Maketplace","Download Apps"]
-    },
-  ]
+  
+
+  
