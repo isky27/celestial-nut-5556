@@ -8,6 +8,8 @@ import {
   TabList,
   Tab,
 } from "@chakra-ui/react";
+import Navbar from "../component/Navbar"
+import Footer from "../component/Footer";
 
 import { Search2Icon } from "@chakra-ui/icons";
 
@@ -122,13 +124,16 @@ const Marketplace = () => {
   ];
   return (
     <>  
+      <Navbar />
       <Box
          height={[
           '268',
           '268',
-          '268', 
-          '262',
+          '298', 
+          '292',
         ]}
+        paddingTop='28'
+        paddingBottom='8'
         style={{
           backgroundImage: `url(${"https://static.airtable.com/images/marketplace_banner@2x.png"})`,
           backgroundRepeat: "no-repeat",
@@ -136,7 +141,7 @@ const Marketplace = () => {
           width: "100%",
         }}
       >
-        <Box w="100%" display="flex" marginTop="8">
+        <Box w="100%" display="flex" >
           <Box  height="100%" width={[
                 '60%', // 0-30em
                 '48%', // 30em-48em
@@ -407,6 +412,7 @@ const Marketplace = () => {
     </Text>
   </Box>
 </Box>
+<Footer/>
 
     </>
   );

@@ -4,7 +4,6 @@ import React from "react";
 import CreaetWorkspaces from "./CreaetWorkspaces";
 
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
 
 const AddTodo = () => {
   const [text, setText] = useState("");

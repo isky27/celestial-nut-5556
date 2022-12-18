@@ -19,13 +19,13 @@ const CreaetWorkspaces = ({ name, deleteFunction, addBase }) => {
     <div>
       {/* Append all Base inside this box */}
       <Box
-        height="22rem"
+        height="35rem"
         marginTop="5rem"
         borderRadius="1rem"
         boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
       >
         <Flex>
-          <Box p="4" width="15%">
+          <Box p="4" width="20%">
             <Heading fontSize="25px" fontFamily="cursive" fontWeight="500">
               {name[0]}
             </Heading>

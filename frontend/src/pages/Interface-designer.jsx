@@ -11,12 +11,15 @@ Accordion,
 Stack,
 Heading,
 Container,Flex
-} 
+}  
 from '@chakra-ui/react'
+import Navbar from "../component/Navbar"
+import Footer from "../component/Footer";
 
 const Interfacedesigner = () => {
   return (
     <>
+        <Navbar/>
         <Box bg='#1a3866' width={[
             '150%', // 0-30em
             '100%', // 30em-48em
@@ -475,6 +478,7 @@ const Interfacedesigner = () => {
                 )}
                 </AccordionItem>
             </Accordion>
+            <Footer/>
     </>
   )
 }

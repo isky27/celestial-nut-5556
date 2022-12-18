@@ -26,7 +26,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   if (isAuth) {
-    return <Navigate to="/" />;
+    return <Navigate to="/workspace" />;
   }
 
   const handleSubmit = (e) => {
