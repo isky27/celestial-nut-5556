@@ -8,7 +8,6 @@ import {
     Stack,
     Collapse,
     Icon,
-    Link,
     Popover,
     HStack,
     PopoverTrigger,
@@ -21,7 +20,8 @@ import {
     DrawerContent,
     DrawerCloseButton,
     Input,
-    useDisclosure
+    useDisclosure,
+    SimpleGrid
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -30,6 +30,49 @@ import {
   } from '@chakra-ui/icons';
 import Flag from './Flag';
 import logo from "../Assets/logo.png"
+
+import { Navigate, Link, useNavigate } from 'react-router-dom';
+
+const drawer_items=[
+    {
+      label:[
+        {item:"Overview"},
+        {item:"Features"},
+        {item:"Integrations"},
+        {item:"Enterprise Overview"},
+        {item:"Maketplace", to:"/marketplace"},
+        {item:"Download Apps"}
+       ]
+    },
+    {
+      label:[
+       { item:"By Time"}, 
+       {item:"By Use Case"}, 
+       { item:"See all solutions"},
+       { item:"Interface Designer", to:"/interface"}]
+    },
+    {
+      label:[
+        {item:"Enterprise Overview"},
+        {item:"Enterprise Services"},
+        {item:"Enterprise Security"}]
+    },
+    {
+      label:[
+        {item:"Webinars"},
+        {item:"Demos"},
+        {item: "Guides"},
+        {item:"Articles"},
+        {item:"Blog"},
+        {item:"API Docs"},
+        {item:"Developer Community"},
+        {item:"Templates", to:"/template"},
+        {item:"Universe"},
+        {item:"Customer Stories"},
+        {item:"Contact Support"}]
+    },
+  ]
+
 import { useNavigate } from 'react-router-dom';
   
   export default function WithSubnavigation() {
@@ -157,6 +200,8 @@ import { useNavigate } from 'react-router-dom';
      
     const { isOpen , onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
+
+     const navigate = useNavigate()
   
     return (
       <Stack direction={'row'} spacing={4}>
@@ -164,11 +209,11 @@ import { useNavigate } from 'react-router-dom';
           <Box key={navItem.label} display="flex" justifyContent={'center'} alignItems="center" >
             <Popover trigger={'hover'} placement={'bottom-start'}>
               <PopoverTrigger>
-                <Link
+                <Link to={navItem.to}>
+                <Text
                   p={2}
-                  // href={navItem.href ?? '#'}
                   fontSize={'lg'}
-                  fontWeight={500}
+                  fontWeight={'500'}
                   color={linkColor}
                   _hover={{
                     textDecoration: 'none',
@@ -176,36 +221,55 @@ import { useNavigate } from 'react-router-dom';
                   }}
                   ref={btnRef} onClick={onOpen}>
                   {navItem.label}
+                </Text>
                 </Link>
               </PopoverTrigger>
             </Popover>
             <Drawer
-        variant="alwaysOpen"
-        {...rest}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        trapFocus={false}
-        closeOnOverlayClick={false}
-        blockScrollOnMount={false}
-        size={'lg'}
-      >
+              variant="alwaysOpen"
+              {...rest}
+              isOpen={isOpen}
+              placement="left"
+              onClose={onClose}
+              trapFocus={false}
+              closeOnOverlayClick={false}
+              blockScrollOnMount={false}
+              size={'lg'}>
         {/* <DrawerOverlay /> */}
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+             <DrawerContent>
+                 <DrawerCloseButton />
+                     {/* <DrawerHeader>Create your account</DrawerHeader> */}
 
-          <DrawerBody>
-            <Input placeholder="Type here..." />
-          </DrawerBody>
+                     <DrawerBody>
+                        {
+                          drawer_items.map((item)=>(
+                            <SimpleGrid columns={2} spacing={10}>
+                                <Box key={item.label}>
+                                {
+                                  item.label.map((el)=>(
+                                    <Link to={el.to}>
+                                        <Text p={2}
+                                          fontSize={'lg'}
+                                          fontWeight={'500'}
+                                          color={linkColor}
+                                          _hover={{
+                                          textDecoration: 'none',
+                                          color: linkHoverColor,
+                                          }} >{el.item}</Text>
+                                    </Link>
+                                  ))
+                                }
+                                </Box>
+                            </SimpleGrid>
+                          ))
+                        }
+                     </DrawerBody>
 
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
-        </DrawerContent>
+                     <DrawerFooter>
+                         <Button variant="outline" mr={3} onClick={onClose}>Cancel </Button>
+                         <Button colorScheme="blue">Save</Button>
+                     </DrawerFooter>
+              </DrawerContent>
             </Drawer>
           </Box>
         ))}
@@ -317,6 +381,7 @@ import { useNavigate } from 'react-router-dom';
     },
     {
       label: 'Pricing',
+      to:"/price"
     },
     {
       label: 'Enterprise',
@@ -326,21 +391,6 @@ import { useNavigate } from 'react-router-dom';
     }
   ];
 
-  const drawer_items=[
-    {
-      label:["Overview", "Features","Integrations",
-      "Enterprise Overview","Maketplace","Download Apps"]
-    },
-    {
-      label:["Overview", "Features","Integrations",
-      "Enterprise Overview","Maketplace","Download Apps"]
-    },
-    {
-      label:["Overview", "Features","Integrations",
-      "Enterprise Overview","Maketplace","Download Apps"]
-    },
-    {
-      label:["Webinars", "Features","Integrations",
-      "Enterprise Overview","Maketplace","Download Apps"]
-    },
-  ]
+  
+
+  
