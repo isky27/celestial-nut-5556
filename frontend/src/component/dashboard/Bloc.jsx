@@ -4,19 +4,17 @@ import React from "react";
 const Bloc = ({ name }) => {
   return (
     <div>
-      {/* <Box border="1px solid green" p={4}> */}
-
       <Box
         marginBottom="1rem"
         border="1px solid red"
-        width="30%"
-        marginLeft="5rem"
+        width="maxContent"
+        marginLeft="1rem"
         borderRadius="2xl"
       >
         <Flex gap="10px">
           <Box
             bg="red.100"
-            width="30%"
+            width="maxContent"
             margin="auto"
             height="8rem"
             borderRadius="1rem"
@@ -36,20 +34,31 @@ const Bloc = ({ name }) => {
           </Box>
           <Box
             // border="1px solid green"
-            width="65%"
+            width="maxContent"
             margin="auto"
             height="8rem"
-            p={6}
           >
-            <Heading
-              fontWeight="medium"
-              fontStyle="oblique"
-              fontSize="2xl"
-              textAlign="center"
-              margin="auto"
-            >
-              You Successfully Created Base {++name}
-            </Heading>
+            <Flex flexDirection={"column"}>
+              <Heading
+                fontWeight="medium"
+                fontStyle="oblique"
+                fontSize="2xl"
+                textAlign="center"
+                margin="auto"
+                p={6}
+              >
+                You Successfully
+              </Heading>
+              <Heading
+                fontWeight="medium"
+                fontStyle="oblique"
+                fontSize="2xl"
+                textAlign="center"
+                margin="auto"
+              >
+                Created Base {++name}
+              </Heading>
+            </Flex>
           </Box>
         </Flex>
       </Box>

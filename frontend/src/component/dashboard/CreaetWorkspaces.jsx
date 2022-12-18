@@ -19,27 +19,28 @@ const CreaetWorkspaces = ({ name, deleteFunction, addBase }) => {
     <div>
       {/* Append all Base inside this box */}
       <Box
-        height="35rem"
+        minHeight={"15rem"}
+        height="maxContent"
         marginTop="5rem"
         borderRadius="1rem"
         boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
       >
-        <Flex>
-          <Box p="4" width="20%">
+        <Flex justifyContent={"space-between"} flexWrap={"wrap"}>
+          <Box p="4">
             <Heading fontSize="25px" fontFamily="cursive" fontWeight="500">
               {name[0]}
             </Heading>
           </Box>
-          <Spacer />
-          <Box p="6" width="25%">
+          <Box p="6">
             <Flex gap="20px">
               <Button
                 onClick={() => addNavigate()}
                 height="30px"
+                // width={"maxContent"}
                 boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
                 fontWeight="normal"
               >
-                Create a base
+                Create base
               </Button>
 
               <Button
@@ -61,11 +62,13 @@ const CreaetWorkspaces = ({ name, deleteFunction, addBase }) => {
             </Flex>
           </Box>
         </Flex>
-        {arr.map((e, index) => (
-          <Link to="/base">
-            <Bloc key={index} name={index} />
-          </Link>
-        ))}
+        <Flex flexWrap={"wrap"}>
+          {arr.map((e, index) => (
+            <Link to="/base">
+              <Bloc key={index} name={index} />
+            </Link>
+          ))}
+        </Flex>
       </Box>
     </div>
   );

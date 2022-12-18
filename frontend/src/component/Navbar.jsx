@@ -17,7 +17,6 @@ import {
     DrawerBody,
     DrawerFooter,
     DrawerHeader,
-    DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
     Input,
@@ -30,13 +29,13 @@ import {
   } from '@chakra-ui/icons';
 import Flag from './Flag';
 import logo from "../Assets/logo.png"
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
   
   export default function WithSubnavigation() {
     const { isOpen, onToggle , onOpen, onClose } = useDisclosure();
     const navigate = useNavigate()
-
-    const isAuth = false
+       const { isAuth } = useSelector((store) => store.userLogin);
   
     return (
       <Box position="fixed" width="100%">
@@ -52,7 +51,7 @@ import { useNavigate } from 'react-router-dom';
           >
             <Flex
               flex={{ base: 1, md: "auto" }}
-              ml={{ base: -2 }}
+              ml={{base:-2}}
               display={{ base: "flex", md: "none" }}
             >
               <IconButton
