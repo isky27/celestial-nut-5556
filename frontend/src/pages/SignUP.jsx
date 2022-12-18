@@ -16,6 +16,7 @@ import {
   Input,
   Stack,
 } from "@chakra-ui/react";
+import { Navigate } from "react-router-dom";
 
 const Signup = () => {
   const { isAuth, isError } = useSelector((store) => store.userSignup);
@@ -38,10 +39,12 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(form)
     dispatch(signupUser(form));
   };
 
+    if (isAuth) {
+      return <Navigate to="/login" />;
+    }
   return (
     <div>
       <Flex minH={"100vh"} align={"center"} justify={"center"}>
