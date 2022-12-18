@@ -26,15 +26,64 @@ import {
 import Flag from './Flag';
 import logo from "../Assets/logo.png"
 import { useNavigate,Link } from 'react-router-dom';
-  
+import { useSelector } from 'react-redux';
+
+const drawer_items = [
+  {
+    label: [
+      { item: "Overview" },
+      { item: "Features" },
+      { item: "Templates", to: "/template" },
+      { item: "Integrations" },
+      { item: "Enterprise Overview" },
+      { item: "Maketplace", to: "/marketplace" },
+      { item: "Interface Designer", to: "/interface" },
+    ],
+    color: "pink.300",
+  },
+  {
+    label: [
+      { item: "By Time" },
+      { item: "By Use Case" },
+      { item: "See all solutions" },
+      { item: "Download Apps" },
+    ],
+    color: "green.600",
+  },
+  {
+    label: [
+      { item: "Enterprise Overview" },
+      { item: "Enterprise Services" },
+      { item: "Enterprise Security" },
+    ],
+    color: "blue.600",
+  },
+  {
+    label: [
+      { item: "Webinars" },
+      { item: "Demos" },
+      { item: "Guides" },
+      { item: "Articles" },
+      { item: "Blog" },
+      { item: "API Docs" },
+      { item: "Developer Community" },
+      { item: "Universe" },
+      { item: "Customer Stories" },
+      { item: "Contact Support" },
+    ],
+    color: "green.600",
+  },
+];
+
   export default function WithSubnavigation() {
     const { isOpen, onToggle , onOpen, onClose } = useDisclosure();
     const navigate = useNavigate()
+ const { isAuth, isError } = useSelector((store) => store.userLogin);
 
   
     return (
-      <Box position="fixed" width="100%">
-      <Flag />
+      <Box position="fixed" width="100%" zIndex={100}>
+        <Flag />
         <Box>
           <Flex
             bg={useColorModeValue("white", "gray.800")}
@@ -64,7 +113,9 @@ import { useNavigate,Link } from 'react-router-dom';
             </Flex>
             <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
               <Box width="15%">
-                <Image src={logo} width="100%" />
+                <Link to={"/"}>
+                  <Image src={logo} width="100%" />
+                </Link>
               </Box>
 
               <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -75,17 +126,19 @@ import { useNavigate,Link } from 'react-router-dom';
             {!isAuth ? (
               <Stack
                 flex={{ base: 1, md: 0 }}
-                justify={'flex-end'}
-                direction={'row'}
-                spacing={6}>
+                justify={"flex-end"}
+                direction={"row"}
+                spacing={6}
+              >
                 <Button
-                  as={'a'}
-                  fontSize={'lg'}
+                  as={"a"}
+                  fontSize={"lg"}
                   fontWeight={400}
-                  border={'3px solid grey'}
+                  border={"3px solid grey"}
                   borderRadius="8px"
-                  bg={'none'}
-                  href={'#'}>
+                  bg={"none"}
+                  href={"#"}
+                >
                   Contact Sales
                 </Button>
                 <Button

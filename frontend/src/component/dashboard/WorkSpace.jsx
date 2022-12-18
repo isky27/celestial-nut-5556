@@ -79,6 +79,7 @@ const WorkSpace = () => {
                <Box
                  borderRadius="10px"
                  p={2}
+                 cursor={"pointer"}
                  bg="rgb(45,127,249)"
                  color="white"
                  _hover={{
